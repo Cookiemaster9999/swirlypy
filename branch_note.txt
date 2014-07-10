@@ -1,0 +1,17 @@
+AGB: We can create subshells as we desire so swirlypy can manage where it is and drop into clean subshells as necessary. The downside of this is that we'll need to figure out how to add all of the nice python interpreter features, like tab completion and such
+but there'll be a library for that, or something, and then swirlypy can just be a FSM with a list of questions.
+
+To accumulate results we save local() as a dictionary and re-apply it to new subshells.
+(Relevant deep-copy method is .copy()).
+
+WilCrofter: OK. I think you have basic architecture knocked. So, how might RGR & I best contribute? Question classes? Course material (Intro to Python?) RGR is Mom of course. Sorry.
+
+AGB: I would suggest adding a question type or two. I can flesh out architecture for the shell questions, since that'll take some coding
+
+WRB: OK. Some yaml for testing?
+
+AGB: Yeah, yaml supports arbitrary fields; they'll be loaded as a dict into the Question, and __init__ of the appropriate category will be called. Note that field names are lowercased. I suggest MultiChoice or MultipleChoice for first question. 
+
+Just copy code from Text.py in subdir, questions. To load yaml, import swirlypy.question and use swirlypy.question. Question.load_yaml(opened_file)
+
+Send me a PR when ready.
